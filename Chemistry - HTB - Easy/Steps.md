@@ -86,6 +86,7 @@ Checking the app's directory, we're able to retrieve the .db database that has s
 >    hashed_password = hashlib.md5(password.encode()).hexdigest()
 
 <br><br>
+
 ![alt text](<Pasted image 20241023010333-1.png>)
 
 <br><br>
@@ -99,6 +100,7 @@ A rapid visit to https://crackstation.net reveals us the cleartext password of r
 <br><br>
 
 ![alt text](<Pasted image 20241102202421.png>)
+
 <br><br>
 
 This is our initial foothold on the machine. We have credentials to access ssh:
@@ -108,34 +110,62 @@ This is our initial foothold on the machine. We have credentials to access ssh:
 > *rosa:<ROSA'S_PASSWORD>*
 
 <br><br>
+
 Running linpeas.sh on the machine, we find out a *service listening on port 8080* of localhost
+
 <br><br>
 
 ![alt text](<Pasted image 20241023012150-1.png>)
+
 <br><br>
+
 To enumerate this service, we perform an *SSH tunneling* to our host, using the following command:
+
 <br><br>
+
 `ssh -L 8080:localhost:8080 rosa@10.10.11.38`
 
 <br><br>
+
 This forwards *our localhost's* port 8080 to port 8080 running on 127.0.0.1 (localhost) remote machine.
 A rapid nmap scan shows us that Chemistry is running *aiohttp 3.9.1*
+
 <br><br>
-![alt text](<Pasted image 20241023012150-2.png>) ![alt text](<Pasted image 20241102193940-1.png>) ![alt text](<Pasted image 20241102200205.png>)
+
+![alt text](<Pasted image 20241023012150-2.png>) 
+
 <br><br>
+
+![alt text](<Pasted image 20241102193940-1.png>) 
+
+<br><br>
+
+![alt text](<Pasted image 20241102200205.png>)
+
+<br><br>
+
 and this is the first result if i search it on google:
+
 <br><br>
+
 https://github.com/z3rObyte/CVE-2024-23334-PoC
+
 <br><br>
+
 It looks like aiohttp software it is vulnerable to *path traversal* up to version *3.9.1*. We're going to modify a bit the script to make it run on *our* localhost's port 8080 and try to read *root's flag*. 
 
 <br><br>
+
 ![alt text](<Pasted image 20241102200634.png>)
+
 <br><br>
 
 And...
 
 <br><br>
+
 ![alt text](<Pasted image 20241102201153.png>)
+
 <br><br>
+
 Success! We have code execution as root user!

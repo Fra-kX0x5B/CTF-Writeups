@@ -37,8 +37,7 @@ Our inital nmap scans reveals two ports open, 22 and 5000.
 <br><br>
 The application provided at port 5000 looks like a parser for *Crystallographic Information Files (CIF)*.
 <br><br>
-![[Pasted image 20241023002915.png]]
-<br><br>
+Chemistry - HTB - Easy/Pasted image 20241023002915.png<br><br>
 Surfing the web we find the recent *CVE-2024-23346* 
 
 https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0

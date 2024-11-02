@@ -89,7 +89,8 @@ Which allows us to gain a reverse shell:
 
 <br><br>
 
-![alt text](<Pasted image 20241023004209-1.png>)
+![Pasted image 20241023004209-1](https://github.com/user-attachments/assets/863f5c8e-9fd9-4335-832c-3b353981df40)
+
 
 <br><br>
 
@@ -100,11 +101,11 @@ Checking the app's directory, we're able to retrieve the .db database that has s
 
 <br><br>
 
-![alt text](<Pasted image 20241023010333-1.png>)
+![Pasted image 20241023010333-1](https://github.com/user-attachments/assets/4d608551-6f3c-4efa-aa7f-12c6edfd4eac)
 
 <br><br>
 
-![alt text](<Pasted image 20241023010740-1.png>)
+![Pasted image 20241023010740-1](https://github.com/user-attachments/assets/23efb1d7-f3bc-4c83-90d7-86ee6a9ee831)
 
 <br><br>
 
@@ -112,7 +113,7 @@ A rapid visit to https://crackstation.net reveals us the cleartext password of r
 
 <br><br>
 
-![alt text](<Pasted image 20241102202421.png>)
+![Pasted image 20241102202421](https://github.com/user-attachments/assets/f75f982e-c7e4-4475-aaef-a51aa3d913ff)
 
 <br><br>
 
@@ -128,7 +129,7 @@ Running linpeas.sh on the machine, we find out a *service listening on port 8080
 
 <br><br>
 
-![alt text](<Pasted image 20241023012150-1.png>)
+![Pasted image 20241023012150-2](https://github.com/user-attachments/assets/e23684f0-94c2-458f-bc70-886c0c5d34ca)
 
 <br><br>
 
@@ -145,7 +146,7 @@ A rapid nmap scan shows us that Chemistry is running *aiohttp 3.9.1*
 
 <br><br>
 
-![alt text](<Pasted image 20241102200205.png>) 
+![Pasted image 20241102200205](https://github.com/user-attachments/assets/cf5b4ec4-b9b7-4c90-b592-e9532b9966f0)
 
 <br><br>
 
@@ -161,7 +162,7 @@ It looks like aiohttp software it is vulnerable to *path traversal* up to versio
 
 <br><br>
 
-![alt text](<Pasted image 20241102200634.png>)
+![Pasted image 20241102200634](https://github.com/user-attachments/assets/ade0fe67-0d57-48da-a028-0c308f1ffe52)
 
 <br><br>
 
@@ -169,7 +170,7 @@ And...
 
 <br><br>
 
-![alt text](<Pasted image 20241102201153.png>)
+![Pasted image 20241102201153](https://github.com/user-attachments/assets/40bfecd8-d215-4b34-abe2-ae06e139e189)
 
 <br><br>
 

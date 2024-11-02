@@ -159,7 +159,7 @@ This forwards *my local* 8080 port  to the remote machine's local 8080 port.
 
 <br>
 
-This means that i can direct external traffic, like a scan or even access the service from a browser if possible, to an internal service on a remote machine that otherwise would be accessible only from the box itself.
+It basically means that i can direct external traffic, like a scan or even access the service from a browser if possible, to an internal service on a remote machine that otherwise would be accessible only from the box itself.
 Nmap shows me that Chemistry is running *aiohttp 3.9.1*
 
 <br><br>

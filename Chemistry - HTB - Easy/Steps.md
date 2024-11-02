@@ -29,9 +29,9 @@ Our inital nmap scans reveals two ports open, 22 and 5000.
 `|`
 `| class="title">Chemistry CIF Analyzer`  
 `|`
-`Welcome to the Chemistry CIF Analyzer. This tool allows you to upload a CIF (Crystallographic Information File) and analyze the structural data contained within.
+`Welcome to the Chemistry CIF Analyzer. This tool allows you to upload a CIF (Crystallographic Information File) and analyze the structural data contained within.`
 
-<---SNIP--->`
+`<---SNIP--->`
 
 
 <br><br>

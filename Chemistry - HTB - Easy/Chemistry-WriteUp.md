@@ -10,8 +10,10 @@
 <br><br>
 
 Our inital nmap scans reveals two ports open, 22 and 5000.
+
 <br><br>
-# `$ nmap -sVC --version-intensity 9 -p 22,5000 -Pn --disable-arp-ping -n chemistry -oN nmap/versions-scan.txt`
+
+`$ nmap -sVC --version-intensity 9 -p 22,5000 -Pn --disable-arp-ping -n chemistry -oN nmap/versions-scan.txt`
 
 `Starting Nmap 7.80 ( [https://nmap.org](https://nmap.org/) ) at 2024-10-22 23:37 CEST`  
 `Nmap scan report for chemistry (10.10.11.38)`  

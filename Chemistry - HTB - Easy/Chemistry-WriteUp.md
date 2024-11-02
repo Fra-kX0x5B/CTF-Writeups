@@ -40,7 +40,8 @@ Our inital nmap scans reveals two ports open, 22 and 5000.
 <br><br>
 The application provided at port 5000 looks like a parser for *Crystallographic Information Files (CIF)*.
 <br><br>
-![alt text](<Pasted image 20241023002915-1.png>)
+![Pasted image 20241023002915-1](https://github.com/user-attachments/assets/b84120fa-fbe7-4534-844a-105686aa94f8)
+
 <br><br>
 Surfing the web we find the recent *CVE-2024-23346* 
 

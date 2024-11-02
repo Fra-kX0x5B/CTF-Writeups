@@ -148,14 +148,6 @@ A rapid nmap scan shows us that Chemistry is running *aiohttp 3.9.1*
 
 <br><br>
 
-![alt text](<Pasted image 20241102193940-1.png>) 
-
-<br><br>
-
-![alt text](<Pasted image 20241102200205.png>)
-
-<br><br>
-
 and this is the first result if i search it on google:
 
 <br><br>

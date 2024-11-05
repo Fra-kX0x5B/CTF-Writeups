@@ -10,7 +10,7 @@
 
 **OS : Linux**
 
-**AUTHOR: Francesco Basile
+**AUTHOR: Francesco Basile**
 
 <br><br>
 

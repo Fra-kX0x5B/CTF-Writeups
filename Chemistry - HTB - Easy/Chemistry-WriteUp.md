@@ -114,7 +114,7 @@ Checking the app's directory, i'm able to retrieve the .db database that has sto
 
 >    hashed_password = hashlib.md5(password.encode()).hexdigest()
 
-<br><br>
+<br>
 
 ![Pasted image 20241023010333-1](https://github.com/user-attachments/assets/4d608551-6f3c-4efa-aa7f-12c6edfd4eac)
 

@@ -122,7 +122,7 @@ Checking the app's directory, i'm able to retrieve the .db database that has sto
 
 ![Pasted image 20241023010740-1](https://github.com/user-attachments/assets/23efb1d7-f3bc-4c83-90d7-86ee6a9ee831)
 
-<br>
+<br><br>
 
 A quick hop to https://crackstation.net reveals me the cleartext password of rosa's user:
 

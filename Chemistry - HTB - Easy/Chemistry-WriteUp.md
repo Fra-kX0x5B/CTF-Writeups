@@ -130,9 +130,9 @@ A quick hop to https://crackstation.net reveals me the cleartext password of ros
 
 ![Pasted image 20241102202421](https://github.com/user-attachments/assets/f75f982e-c7e4-4475-aaef-a51aa3d913ff)
 
-<br><br>
+<br>
 
-I get an initial foothold on the machine. I have credentials to access ssh:
+And finallyi get an initial foothold on the machine. I have a set of credentials to access ssh:
 
 <br>
 

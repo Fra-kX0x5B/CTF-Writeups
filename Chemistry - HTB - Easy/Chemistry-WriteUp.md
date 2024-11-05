@@ -1,11 +1,16 @@
+![image](https://github.com/user-attachments/assets/81146324-46a2-4112-a69d-7cd2f5ea7918)
+
 <br><br>
-**Platform : Hack The Box**
 
-**Box : Chemistry**
+**PLATFORM : Hack The Box**
 
-**Difficulty : Easy**
+**BOX : Chemistry**
+
+**DIFFICULTY : Easy**
 
 **OS : Linux**
+
+**AUTHOR: Francesco Basile
 
 <br><br>
 

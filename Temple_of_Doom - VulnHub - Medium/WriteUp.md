@@ -18,6 +18,7 @@ Initial Nmap scan reveals two ports open: 22, or SSH and a service on unusual *p
 <br>
 
 `$ nmap -sVC --version-all --disable-arp-ping -Pn -n -p 22,666 192.168.126.241 -oN Desktop/CTFs/VulnHub/Doom/nmap/versions_scan.txt`
+
 `Starting Nmap 7.80 ( https://nmap.org ) at 2024-10-29 23:31 CET`
 `Nmap scan report for 192.168.126.241`
 `Host is up (0.025s latency).`

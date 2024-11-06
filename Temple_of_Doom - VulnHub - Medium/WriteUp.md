@@ -17,7 +17,7 @@ Initial Nmap scan reveals two ports open: 22, or SSH and a service on unusual *p
 
 <br>
 
-Starting Nmap 7.80 ( https://nmap.org ) at 2024-10-29 23:31 CET
+*Starting Nmap 7.80 ( https://nmap.org ) at 2024-10-29 23:31 CET
 Nmap scan report for 192.168.126.241
 Host is up (0.025s latency).
 
@@ -31,7 +31,7 @@ PORT    STATE SERVICE VERSION
 |_http-title: Site doesn't have a title (text/html; charset=utf-8).
 
 Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .
-Nmap done: 1 IP address (1 host up) scanned in 15.35 seconds
+Nmap done: 1 IP address (1 host up) scanned in 15.35 seconds*
 
 
 <br><br>

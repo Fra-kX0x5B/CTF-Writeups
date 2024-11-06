@@ -17,23 +17,8 @@ Initial Nmap scan reveals two ports open: 22, or SSH and a service on unusual *p
 
 <br>
 
-`nmap -sVC --version-all --disable-arp-ping -Pn -n -p 22,666 192.168.126.241 -oN Desktop/CTFs/VulnHub/Doom/nmap/versions_scan.txt`
-
-`Starting Nmap 7.80 ( https://nmap.org ) at 2024-10-29 23:31 CET`
-`Nmap scan report for 192.168.126.241`
-`Host is up (0.025s latency).`
-
-`PORT    STATE SERVICE VERSION`
-`22/tcp  open  ssh     OpenSSH 7.7 (protocol 2.0)`
-`| ssh-hostkey:` 
-`|   2048 95:68:04:c7:42:03:04:cd:00:4e:36:7e:cd:4f:66:ea (RSA)`
-`|   256 c3:06:5f:7f:17:b6:cb:bc:79:6b:46:46:cc:11:3a:7d (ECDSA)`
-`|_  256 63:0c:28:88:25:d5:48:19:82:bb:bd:72:c6:6c:68:50 (ED25519)`
-`666/tcp open  http    Node.js Express framework`
-`|http-title: Site doesn't have a title (text/html; charset=utf-8).`
-
-`Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .`
-`Nmap done: 1 IP address (1 host up) scanned in 15.35 seconds`
+`nmap -sVC --version-all --disable-arp-ping -Pn -n -p 22,666 192.168.126.241 -oN  Desktop/CTFs/VulnHub/Doom/nmap/versions_scan.txt`
+<br>`Starting Nmap 7.80 ( https://nmap.org ) at 2024-10-29 23:31 CET`<br>`Nmap scan report for 192.168.126.241`<br>`Host is up (0.025s latency).`<br>`PORT    STATE SERVICE VERSION`<br>`22/tcp  open  ssh     OpenSSH 7.7 (protocol 2.0)`<br>`| ssh-hostkey:`<br>`|   2048 95:68:04:c7:42:03:04:cd:00:4e:36:7e:cd:4f:66:ea (RSA)`<br>`|   256 c3:06:5f:7f:17:b6:cb:bc:79:6b:46:46:cc:11:3a:7d (ECDSA)`<br>`|_  256 63:0c:28:88:25:d5:48:19:82:bb:bd:72:c6:6c:68:50 (ED25519)`<br>`666/tcp open  http    Node.js Express framework`<br>`|http-title: Site doesn't have a title (text/html; charset=utf-8).`<br>`Service detection performed. Please report any incorrect results at https://nmap.org/submit/ .`<br>`Nmap done: 1 IP address (1 host up) scanned in 15.35 seconds`
 
 
 <br><br>

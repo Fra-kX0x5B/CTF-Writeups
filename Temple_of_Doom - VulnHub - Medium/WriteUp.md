@@ -2,9 +2,13 @@
 ![Pasted image 20241106151209](https://github.com/user-attachments/assets/7feab61c-3cd5-422e-9a59-feb330702d30)
 <br><br>
 **Platform : Vulnhub**
+<br>
 **Box : Temple of Doom**
+<br>
 **Difficulty : Medium**
+<br>
 **OS : Linux**
+<br>
 **Author : Francesco Basile**
 <br><br>
 Initial Nmap scan reveals two ports open: 22, or SSH and a service on unusual *port 666*:

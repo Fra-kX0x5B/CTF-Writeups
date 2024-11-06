@@ -210,7 +210,11 @@ We sure get our reverse shell and become root!
 <br>
 
 We can enjoy our flag:
+
 <br>
+
 ![Pasted image 20241106163521](https://github.com/user-attachments/assets/260d49bf-65fb-4add-a1e4-c377e75291a1)
+
 <br>
+
 It says that there is another way to become root, so i might come back another day and update the writeup with the other method to PrivEsc.

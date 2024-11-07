@@ -161,13 +161,13 @@ to an internal service on a remote machine that otherwise would be accessible on
 
 <br>
 
-Nmap shows me that Chemistry is running *aiohttp 3.9.1*...
+Nmap shows me that Chemistry is running *aiohttp 3.9.1*:
 
 ![Pasted image 20241102200205](https://github.com/user-attachments/assets/cf5b4ec4-b9b7-4c90-b592-e9532b9966f0)
 
 <br><br>
 
-...and this is the first result if i search it on google:
+And this is the first result if i search it on google:
 
     https://github.com/z3rObyte/CVE-2024-23334-PoC
 
@@ -185,4 +185,4 @@ And...
 
 <br><br>
 
-Success! I have partial root access that can be leveraged to a shell and eventual full compromise of the box!
+Success. I have partial root access that can be leveraged to a shell and eventual full compromise of the box.

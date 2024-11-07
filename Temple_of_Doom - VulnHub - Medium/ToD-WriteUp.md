@@ -1,15 +1,19 @@
 <br><br>
 ![Pasted image 20241106151209](https://github.com/user-attachments/assets/7feab61c-3cd5-422e-9a59-feb330702d30)
 <br><br>
-**Platform : Vulnhub**
+Platform : <br>**Vulnhub**
 <br>
-**Box : Temple of Doom**
+
+Box : <br>**Temple of Doom**
 <br>
-**Difficulty : Medium**
+
+Difficulty : <br>**Medium**
 <br>
-**OS : Linux**
+
+OS : <br>**Linux**
 <br>
-**Author : Francesco Basile**
+
+Author : <br>**Francesco Basile**
 
 <br><br>
 
@@ -171,7 +175,7 @@ And we are fireman again! SUID bit on that particular binary it is not exactly a
 
 <br>
 
-# Root PrivEsc
+# Sudo tcpdump Exploitation
 
 <br>
 

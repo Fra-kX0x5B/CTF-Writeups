@@ -19,7 +19,6 @@ Author : <br>**Francesco Basile**
 
 <br><br>
 
-
 We start the assessment with a full port nmap scan, which gives the following results:
 
 	$ nmap -p- -T4 --disable-arp-ping -Pn -n certified -oN nmap/all_ports.out                          

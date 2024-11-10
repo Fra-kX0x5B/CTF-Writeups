@@ -341,7 +341,7 @@ I run BloodHound again, marking first user management_svc as owned. And again by
 
 <br><br>
 
-GenericAll means that we can even _reset_ that user's password withouth the user itself to be notified. BloodHound suggests to use the samba's net tool, net rpc which can also perform pass-the-hash with pth-toolkit's net tool (https://github.com/byt3bl33d3r/pth-toolkit).However, i couldn't get this tool to work. I knew that _BloodyAD_ can perform this type of actions too, so let's try:
+GenericAll means that we can even _reset_ that user's password withouth the user itself to be notified. BloodHound suggests to use the samba's net tool, net rpc which can also perform pass-the-hash with pth-toolkit's net tool (https://github.com/byt3bl33d3r/pth-toolkit). However, i couldn't get this tool to work. I knew that _BloodyAD_ can perform this type of actions too, so let's try:
 
 <br>
 
